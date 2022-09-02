@@ -9,11 +9,18 @@ import (
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/TheCleopatra/golang-gql-learning/graph"
 	"github.com/TheCleopatra/golang-gql-learning/graph/generated"
+	"github.com/joho/godotenv"
 )
 
 const defaultPort = "8080"
 
 func main() {
+
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file!")
+	}
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort
